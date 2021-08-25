@@ -6,7 +6,7 @@ export const DefaultLayout = (props) => {
     return (
         <div>
         <div className="default-layout">
-        <header className="header">
+        <header className="header mb-2">
             <Header/>
         </header>
 
