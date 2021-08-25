@@ -37,7 +37,7 @@ export const Entry = () => {
         if(!email){
            return alert("Please Enter the email");
         }
-        console.log(email)
+        console.log(email);
 
     }
 
