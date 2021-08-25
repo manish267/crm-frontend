@@ -1,5 +1,4 @@
 import React from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image'
 import { Footer } from './partials/Footer.comp'
 import { Header } from './partials/Header.comp'
 
