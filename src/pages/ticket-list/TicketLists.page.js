@@ -12,6 +12,9 @@ export const TicketLists = () => {
   
   const handleOnChange = (e) => {
       const {value}=e.target;
+      if(value===""){
+          setDispTicket(tickets);
+      }
       setStr(value);
       searchTicket(str);
       
