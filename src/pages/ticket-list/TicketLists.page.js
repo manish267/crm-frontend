@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { PageBreadcrumb } from "../../components/breadcrumb/Breadcrumb.comp";
 import { SearchForm } from "../../components/search-form/SearchForm.comp";
-import {TicketTable} from './../../components/ticket-table/TicketTable.comp'
-import tickets from '../../assets/data/dummy-tickets.json';
+import {TicketTable} from './../../components/ticket-table/TicketTable.comp';
+// import tickets from '../../assets/data/dummy-tickets.json';
 import { Link } from "react-router-dom";
+import {useDispatch } from "react-redux";
+import {fetchAllTickets} from './ticketsAction'
 
 
 export const TicketLists = () => {
-  const [str, setStr] = useState("");
-  const [dispTicket, setDispTicket] = useState(tickets)
 
+
+
+  const dispatch=useDispatch();
+  // const [str, setStr] = useState("");
+
+  useEffect(() => {
+    dispatch(fetchAllTickets())
+    }, [dispatch]);
   
-  const handleOnChange = (e) => {
-      const {value}=e.target;
-      if(value===""){
-          setDispTicket(tickets);
-      }
-      setStr(value);
-      searchTicket(str);
+  // const handleOnChange = (e) => {
+  //     const {value}=e.target;
+  //     if(value===""){
+  //         setDispTicket(tickets);
+  //     }
+  //     setStr(value);
+  //     searchTicket(str);
       
-    };
+  //   };
     
-    const searchTicket=sttr=>{
+    // const searchTicket=sttr=>{
         
-        const displayTickets= tickets.filter(row=>row.subject.toLowerCase().includes(sttr.toLowerCase()));
+    //     const displayTickets= tickets.filter(row=>row.subject.toLowerCase().includes(sttr.toLowerCase()));
         
-        console.log(displayTickets)
-        setDispTicket(displayTickets)
-        
-        
-    }
-    useEffect(() => {
-    }, [str]);
+    //     console.log(displayTickets)
+    //     setDispTicket(displayTickets)
+    // }
+    
 
   return (
     <Container>
@@ -51,13 +56,13 @@ export const TicketLists = () => {
         </Col>
 
         <Col className="text-right">
-          <SearchForm handleOnChange={handleOnChange} str={str} />
+          <SearchForm/>
         </Col>
       </Row>
       <hr />
       <Row>
           <Col>
-              <TicketTable tickets={dispTicket} />
+              <TicketTable />
 
           </Col>
       </Row>
